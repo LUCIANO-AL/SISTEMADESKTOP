@@ -1,0 +1,379 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="termodeadesao" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="0d5753dc-53a1-4ca9-9f4a-2b27012ae6e6">
+	<property name="ireport.zoom" value="1.6500000000000004"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="2086"/>
+	<parameter name="idassoc" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select
+ASSOC.IDASSOC,date_format(DATACADASTASSOC,'%d de '), CASE MONTHNAME(DATACADASTASSOC)
+                when 'January' then 'Janeiro'
+                when 'February' then 'Fevereiro'
+                when 'March' then 'Março'
+                when 'April' then 'Abril'
+                when 'May' then 'Maio'
+                when 'June' then 'Junho'
+                when 'July' then 'Julho'
+                when 'August' then 'Agosto'
+                when 'September' then 'Setembro'
+                when 'November' then 'Novembro'
+                when 'December' then 'Dezembro'
+                END as mes ,date_format(DATACADASTASSOC,' de %Y') ,NOMEASSOC, NOMEFANT, REPRESENTANTE, UFASSOC, CIDADEASSOC, BAIRROASSOC, LOGRADOUROASSOC, COMPLEMENTOASSOC, CEPASSOC, FONEASSOC1, FONEASSOC2, FONEASSOC3, EMAILASSOC, TIPODOCUMENTO, CNPJCPFASSOC,Concat('R$ ',
+               Replace
+                 (Replace
+                   (Replace
+                     (Format(valorparcum, 2), '.', '|'), ',', '.'), '|', ',')) AS parcum, Concat('R$ ',
+               Replace
+                 (Replace
+                   (Replace
+                     (Format(valormensal, 2), '.', '|'), ',', '.'), '|', ',')) as mensalidade,
+EMPR.nomeempr, nomefanteempr, logradouroempr, ufempr,cidadeempr,bairroempr,cepempr,complempr
+from tbassociado as ASSOC
+inner join tbempresa as EMPR
+on (EMPR.idempr = ASSOC.idempr) where IDASSOC = $P{idassoc}]]>
+	</queryString>
+	<field name="IDASSOC" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="date_format(DATACADASTASSOC,&apos;%d de &apos;)" class="java.lang.String"/>
+	<field name="mes" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="date_format(DATACADASTASSOC,&apos; de %Y&apos;)" class="java.lang.String"/>
+	<field name="NOMEASSOC" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="NOMEFANT" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="REPRESENTANTE" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="UFASSOC" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="CIDADEASSOC" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="BAIRROASSOC" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="LOGRADOUROASSOC" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="COMPLEMENTOASSOC" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="CEPASSOC" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="FONEASSOC1" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="FONEASSOC2" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="FONEASSOC3" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="EMAILASSOC" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="TIPODOCUMENTO" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="CNPJCPFASSOC" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="parcum" class="java.lang.String"/>
+	<field name="mensalidade" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nomeempr" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nomefanteempr" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="logradouroempr" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ufempr" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cidadeempr" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="bairroempr" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cepempr" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="complempr" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<variable name="LOGRADOUROASSOC_1" class="java.lang.Integer" resetType="Column" calculation="Count">
+		<variableExpression><![CDATA[$F{LOGRADOUROASSOC}]]></variableExpression>
+	</variable>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="56" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="12" width="555" height="20" uuid="87271453-2f45-40f8-b8e5-860f659e7875"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="24" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="555" height="20" uuid="42fb4475-5dbb-4b9c-87e1-02def99a5e81"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nomeempr}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="640" splitType="Stretch">
+			<textField>
+				<reportElement x="37" y="62" width="467" height="125" uuid="c7753e9a-1456-4fcc-824d-6b5d0bbf0517"/>
+				<textElement textAlignment="Justified">
+					<font size="12" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["            A partir do dia " +  $F{date_format(DATACADASTASSOC,'%d de ')} +$F{mes}+ $F{date_format(DATACADASTASSOC,' de %Y')}+ " e pelo presente Instrumento Particular de Associação, de um lado " + $F{nomeempr} + " e de outro " + $F{NOMEFANT} +", tendo como representante legal " + $F{REPRESENTANTE}+", " + $F{TIPODOCUMENTO} + " nº " + $F{CNPJCPFASSOC}+", com endereço na " +$F{LOGRADOUROASSOC}+", Bairro "+ $F{BAIRROASSOC}+", "+ $F{CIDADEASSOC} + " - " + $F{UFASSOC}+ " - "+ "CEP "+ $F{CEPASSOC} + " - "+ "Telefone "+ $F{FONEASSOC1}+", E-mail, "+ $F{EMAILASSOC}+", ajustam o seguinte: "]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="37" y="169" width="86" height="20" uuid="bdc94d1d-4de9-451b-98ee-8a435c378181"/>
+				<textElement textAlignment="Justified">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cláusula 1ª]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="37" y="169" width="467" height="80" uuid="cfe74ade-e8d1-469e-b95b-fdbb1cedf76f"/>
+				<textElement textAlignment="Justified">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA["              – Através do aceite a este Termo de Adesão de Associação, o(a) ASSOCIADO(A) descrito(a) no Cadastro acima preenchido, manifesta sua vontade de ao quadro de associados do " + $F{nomeempr} + ", declarando conhecer e concordar com as normas estatutárias e regimentos internos, subordinando-se a elas e às cláusulas abaixo."]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="37" y="249" width="467" height="33" uuid="f3e9791e-e123-4aad-a3d8-dbc6bed7cdb3"/>
+				<textElement textAlignment="Justified">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[I - O referido cadastro será analisado pela Diretoria da Associação para aprovação, conforme previsto no seu Estatuto e Regimento Interno.]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="36" y="282" width="467" height="54" uuid="214b766d-94f1-4331-b7c1-df2df046597e"/>
+				<textElement textAlignment="Justified">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA["II- A aprovação do (a) ASSOCIADO (A) estará condicionada ao cumprimento dos requisitos necessários ao gozo dos benefícios oferecidos, a critério exclusivo da Diretoria da " + $F{nomefanteempr} + "."]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="36" y="338" width="467" height="36" uuid="cabff1d9-0a93-4c15-9998-003b02c7b0d4"/>
+				<textElement textAlignment="Justified">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[           – DO OBJETO: O presente termo tem como objeto a “ADESÃO DE ASSOCIAÇÃO”.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="36" y="338" width="100" height="20" uuid="6c6c03b1-7fbf-4122-97c4-fbdc1bc4e10a"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cláusula 2ª]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="37" y="374" width="467" height="51" uuid="dd0ba44d-6ea0-4a1e-94d8-f0811d6faed3"/>
+				<textElement textAlignment="Justified">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Parágrafo Único - O ASSOCIADO poderá fazer uso dos benefícios oferecidos por este Instituto, mediante seu aceite a este TERMO DE ADESÃO DE ASSOCIAÇÃO e após a aprovação da " + $F{nomefanteempr} + "."]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="37" y="425" width="100" height="20" uuid="6d7f90b4-0429-4427-afc4-2643f4824e98"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cláusula 3ª ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="37" y="425" width="467" height="53" uuid="71b1d236-71a7-488b-bc4f-7b4ea1c14ec9"/>
+				<textElement textAlignment="Justified">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA["                   – DA EFETIVAÇÃO DA ASSOCIAÇÃO: Considerar-se-á efetiva a adesão na associação quando o ASSOCIADO(a) for aprovado(o) por parte da Diretoria da " + $F{nomefanteempr} + ", o que se dará de acordo com:"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="37" y="493" width="467" height="20" uuid="a0c71bfe-fb57-40aa-95d5-b90e3ba37bb0"/>
+				<textElement textAlignment="Justified">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[I - Assinatura da ficha do Termo de Ingresso junto à Associação. ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="37" y="528" width="467" height="20" uuid="5252d8fd-ada0-48d2-9766-438206c612df"/>
+				<textElement textAlignment="Justified">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[II - Do pagamento da taxa de adesão.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="37" y="563" width="467" height="39" uuid="3e03ccda-02a4-4077-8642-73d8ffb70962"/>
+				<textElement textAlignment="Justified">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[III - após a realização da vistoria prévia no veículo ou conjunto (sendo necessário ambos para proteção).]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="22" width="555" height="20" uuid="145ec61b-ccaa-4f66-97dd-27bb8721cb29"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[INSTRUMENTO PARTICULAR DE ASSOCIAÇÃO]]></text>
+			</staticText>
+		</band>
+		<band height="706">
+			<textField>
+				<reportElement x="50" y="188" width="467" height="95" uuid="e63b4d32-7c98-43bd-b4e6-d7f66d090317"/>
+				<textElement textAlignment="Justified">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA["                   – DO VALOR DA ASSOCIAÇÃO: corresponde ao pagamento do rateio das despesas consoante o que preconiza o art. 5 e 6 do regimento interno; e o valor das mensalidades que deverá ser recolhida pela associação no montante da 1° parcela da mensalidade de " + $F{parcum} + " e as posteriores serão no valor de " + $F{mensalidade} + ", conforme o art. 2, do regimento interno vigente."]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="51" y="283" width="467" height="20" uuid="4c019d4e-95f8-49a9-a276-e74c6b61cde6"/>
+				<textElement textAlignment="Justified">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[                       – O associado, qualificado neste Instrumento, declara que:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="51" y="283" width="100" height="20" uuid="fd36314b-fae5-49ca-8dab-09bf56af72c4"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cláusula 5ª]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="51" y="303" width="467" height="55" uuid="9017565f-1304-4812-a5ce-ad1dbbfe668d"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA["I - Está ciente e de pleno acordo com as condições aqui estabelecidas neste Termo e previstas pelo Estatuto do " + $F{nomefanteempr} + ", bem como de acordo com as cláusulas e obrigações constantes no Estatuto e Regimento Interno."]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="51" y="358" width="467" height="42" uuid="5ae3c9af-89b5-490c-b2f7-d9f0a42f6dc0"/>
+				<textElement textAlignment="Justified">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[II - Está ciente e de acordo que deverá cumprir com todas as suas obrigações, especialmente de fidelização, durante a vigência da sua associação.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="51" y="411" width="467" height="65" uuid="32b67ad2-0cc3-4124-8dbb-d925d0d06d07"/>
+				<textElement textAlignment="Justified">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[                       – Para dirimir quaisquer controvérsias oriundas do presente Instrumento, as partes elegem o Foro de São Luís/MA, declinando de outros, por mais privilegiados que sejam. E por estarem, assim, justas e convencionadas, as partes assinam o presente Aditivo em 02 (duas) vias de igual teor e forma.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="51" y="411" width="72" height="18" uuid="b5482413-d8ec-4af8-8943-0ad8b047f442"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cláusula 6ª]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="51" y="509" width="467" height="20" uuid="6859d43e-4bae-49b7-8106-a212f780b6d6"/>
+				<textElement textAlignment="Justified">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Local/Data: ___________________________________________________________  	]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="51" y="562" width="232" height="20" uuid="fe039060-48b5-4ad1-bd87-4a541104fd86"/>
+				<textElement textAlignment="Justified">
+					<font isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[________________________________________   ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="123" y="582" width="86" height="20" uuid="d4eb5cce-d22e-4add-8839-fbe6c300752b"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[ASSOCIADO]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="353" y="582" width="115" height="20" uuid="9c56a3ff-44c2-450f-86ae-cb12a65b03ae"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nomefanteempr}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="293" y="562" width="225" height="20" uuid="5ebd9e9d-6dc9-4bb3-bbe6-fae0054bb1a8"/>
+				<textElement textAlignment="Justified">
+					<font isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[________________________________________   ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="50" y="637" width="466" height="20" uuid="28ddacd2-51fe-4ecc-8f13-ddc7f696c650"/>
+				<textElement>
+					<font size="12" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[Testemunha 1	______________________________CPF ______________________ 	]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="50" y="686" width="466" height="20" uuid="8f4ede65-bcb4-490e-af45-83f3bb417e3e"/>
+				<textElement>
+					<font size="12" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[Testemunha 2	______________________________CPF ______________________ 	]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="49" y="188" width="100" height="17" uuid="dec36795-58fc-473e-b776-fb81cc1ccf44"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cláusula 4ª]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="51" y="168" width="465" height="20" uuid="301f1329-af7a-4baf-aca0-5dd42927f869"/>
+				<text><![CDATA[]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="49" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="23" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="555" height="20" uuid="7fac8ab7-5fd1-4368-92fa-883e3a24b224"/>
+				<textElement textAlignment="Center">
+					<font fontName="Calibri" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{logradouroempr}  + ", " + $F{complempr} + ",  " + $F{bairroempr} + ", CEP: " + $F{cepempr} + ",  " + $F{cidadeempr} + "/" + $F{ufempr}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

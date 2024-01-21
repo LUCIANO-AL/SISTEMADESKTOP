@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="termodeadesaoconjuntos" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="27383f86-3ca2-4383-a8a5-c93b0700cb6b">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="317"/>
+	<parameter name="idassoc" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select
+VEIC.idveic,date_format(data_cadveic,'%d de '), CASE MONTHNAME(data_cadveic)
+                when 'January' then 'Janeiro'
+                when 'February' then 'Fevereiro'
+                when 'March' then 'Março'
+                when 'April' then 'Abril'
+                when 'May' then 'Maio'
+                when 'June' then 'Junho'
+                when 'July' then 'Julho'
+                when 'August' then 'Agosto'
+                when 'September' then 'Setembro'
+                when 'November' then 'Novembro'
+                when 'December' then 'Dezembro'
+                END as mes ,date_format(data_cadveic,' de %Y') ,nomepropr,
+                group_concat(concat(' '),marca, concat('/'), modelo, concat(' '), ano ),
+                group_concat(concat(' '),placa), group_concat(concat(' '),renavan), idassoc, numcarretaveic, numdollyveic,
+EMPR.nomeempr, nomefanteempr, logradouroempr, ufempr,cidadeempr,bairroempr,cepempr,complempr
+from tbveiculo as VEIC
+inner join tbempresa as EMPR
+on (EMPR.idempr = VEIC.idempr) where idassoc = $P{idassoc}]]>
+	</queryString>
+	<field name="idveic" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="date_format(data_cadveic,&apos;%d de &apos;)" class="java.lang.String"/>
+	<field name="mes" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="date_format(data_cadveic,&apos; de %Y&apos;)" class="java.lang.String"/>
+	<field name="nomepropr" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="group_concat(concat(&apos; &apos;),marca, concat(&apos;/&apos;), modelo, concat(&apos; &apos;), ano )" class="java.lang.String"/>
+	<field name="group_concat(concat(&apos; &apos;),placa)" class="java.lang.String"/>
+	<field name="group_concat(concat(&apos; &apos;),renavan)" class="java.lang.String"/>
+	<field name="idassoc" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="numcarretaveic" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="numdollyveic" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nomeempr" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nomefanteempr" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="logradouroempr" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ufempr" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cidadeempr" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="bairroempr" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cepempr" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="complempr" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="24" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="20" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="23" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="555" height="20" uuid="77b2dfb6-54c1-47c1-a5b2-7e6c04dea8c3"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nomeempr}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="662" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="13" width="555" height="20" uuid="9de130dd-2114-4e2e-9662-88c148f2ef4d"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TERMO DE ADESÃO - VEÍCULOS]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="37" y="47" width="473" height="125" uuid="6de2bea9-52c7-4548-8b89-2d08b77312d4"/>
+				<textElement textAlignment="Justified">
+					<font size="12" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["      A partir do dia " + $F{date_format(data_cadveic,'%d de ')} + $F{mes} + $F{date_format(data_cadveic,' de %Y')} + " e pelo presente Instrumento Particular de Associação, de um lado " + $F{nomeempr} + " e de outro " + $F{nomepropr} +",declaro para os devidos fins, que os veículos de marca, modelo e ano " + $F{group_concat(concat(' '),marca, concat('/'), modelo, concat(' '), ano )} + ", placa " + $F{group_concat(concat(' '),placa)} + ", RENAVAM " + $F{group_concat(concat(' '),renavan)} + ", de acordo com os moldes do artigo 45º do seu regimento interno passa a ser resguardado pela proteção veicular, deste modo, ajustam o seguinte:"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="37" y="184" width="473" height="64" uuid="ae2d0588-1113-40c3-8f1e-252a1387fcf6"/>
+				<textElement textAlignment="Justified">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[               - Constitui objeto deste instrumento a disponibilização do PROGRAMA DE PROTEÇÃO VEICULAR para os ASSOCIADOS da ASM, a fim de conferir proteção e segurança aos seus veículos, mediante rateio dos eventuais prejuízos materiais ocorridos em decorrência de danos exclusivos aos mesmos.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="37" y="184" width="86" height="20" uuid="2bce35f4-11ea-4a33-a1c4-91a6fd0716a4"/>
+				<textElement textAlignment="Justified">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cláusula 1ª]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="37" y="260" width="473" height="82" uuid="403299d5-5b78-4018-b0f5-108a841604da"/>
+				<textElement textAlignment="Justified">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[                      - O sistema de proteção veicular funciona com base no cooperativismo entre os ASSOCIADOS da associação que optarem por essa proteção. Dessa forma, todos os custos para a manutenção dessa PROTEÇÃO VEICULAR serão custeados pelos próprios ASSOCIADOS, buscando sempre a integração sócio comunitária dos ASSOCIADOS.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="37" y="260" width="69" height="20" uuid="6110a53d-6dd8-441c-934d-ebec0f678388"/>
+				<textElement textAlignment="Justified">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cláusula 2ª]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="37" y="342" width="473" height="35" uuid="180a70c7-a873-4277-81f9-4f723cbd913e"/>
+				<textElement textAlignment="Justified">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[                      - A opção à proteção veicular é voluntária e deverá ser formalizada pelo ASSOCIADO, através de aceite deste termo.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="37" y="342" width="86" height="20" uuid="b8742104-0a9e-4b02-a851-e1b23228cac8"/>
+				<textElement textAlignment="Justified">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cláusula 3ª]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="39" y="388" width="473" height="35" uuid="1eea09c4-fb15-4ec6-8463-18a66532020c"/>
+				<textElement textAlignment="Justified">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[                           - Com a assinatura do termo de adesão, o ASSOCIADO declara ter pleno conhecimento e aceitar todas as condições dispostas neste instrumento.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="39" y="388" width="86" height="20" uuid="98f52347-33c6-492b-9198-148209425a44"/>
+				<textElement textAlignment="Justified">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cláusula 4ª]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="38" y="433" width="473" height="59" uuid="8fef8d5c-df16-4b5a-b328-dc7572c0ba71"/>
+				<textElement textAlignment="Justified">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[                           - Somente poderá aderir ao PROGRAMA DE PROTEÇÃO VEICULAR aquele que seja ASSOCIADO da ASSOCIAÇÃO SUL MARANHENSE e que, por sua vez, cumpra rigorosamente com todas as suas obrigações de associado.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="38" y="433" width="86" height="20" uuid="e399bb3b-573f-43b6-8bed-634208e15dba"/>
+				<textElement textAlignment="Justified">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cláusula 5ª]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="38" y="504" width="483" height="20" uuid="e47c3ed8-c460-417f-a0ff-30eb910099b9"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Local/Data:___________________________________________________________  	]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="110" y="563" width="86" height="20" uuid="c1f85362-bfbd-4a9a-9462-b15a3a05e863"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[ASSOCIADO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="280" y="543" width="232" height="20" uuid="af39f567-03fe-4614-8f64-064e7fa8822c"/>
+				<textElement textAlignment="Justified">
+					<font isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[______________________________________   ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="38" y="543" width="232" height="20" uuid="ea861d7a-f0e5-4898-8b21-7948cd9dcdc2"/>
+				<textElement textAlignment="Justified">
+					<font isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[_______________________________________  ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="347" y="563" width="115" height="20" uuid="562c5f6c-1521-482b-bbd1-e00a7fcdb7fc"/>
+				<textElement textAlignment="Center">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nomefanteempr}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="38" y="637" width="473" height="20" uuid="0af85cee-ee61-4ccd-b1a7-e65e4857ae11"/>
+				<textElement>
+					<font size="12" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[Testemunha 2	______________________________CPF ______________________ 	]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="39" y="594" width="473" height="20" uuid="5d8e7c5a-0e1e-4cf6-9b60-cf9e18cce42f"/>
+				<textElement>
+					<font size="12" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[Testemunha 1	______________________________CPF ______________________ 	]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="21" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="555" height="20" uuid="caa98bf1-bded-4fd5-a528-37a69ae36343"/>
+				<textElement textAlignment="Center">
+					<font fontName="Calibri" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{logradouroempr}  + ", " + $F{complempr} + ",  " + $F{bairroempr} + ", CEP: " + $F{cepempr} + ",  " + $F{cidadeempr} + "/" + $F{ufempr}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="16" splitType="Stretch"/>
+	</summary>
+</jasperReport>
