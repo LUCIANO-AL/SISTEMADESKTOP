@@ -291,8 +291,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     private void menCadAssociadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menCadAssociadoActionPerformed
         TelaAssociado associado = new TelaAssociado();
-        associado.setVisible(true);
         desktop.add(associado);
+        associado.setVisible(true);       
 
     }//GEN-LAST:event_menCadAssociadoActionPerformed
 
@@ -323,14 +323,16 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     private void menCadUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menCadUsuarioActionPerformed
         TelaUsuario usuario = new TelaUsuario();
-        usuario.setVisible(true);
         desktop.add(usuario);
+        usuario.setVisible(true);
+        
     }//GEN-LAST:event_menCadUsuarioActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         TelaEmpresa empresa = new TelaEmpresa();
-        empresa.setVisible(true);
         desktop.add(empresa);
+        empresa.setVisible(true);
+        
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void cboEmpresaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboEmpresaActionPerformed
@@ -342,27 +344,29 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_menCadActionPerformed
 
     private void menCadContRecActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menCadContRecActionPerformed
-        TelaContasReceber rec = new TelaContasReceber();
-        rec.setVisible(true);
+        TelaContasReceber rec = new TelaContasReceber();  
         desktop.add(rec);
+        rec.setVisible(true);
+        
+        
     }//GEN-LAST:event_menCadContRecActionPerformed
 
     private void menCadBancoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menCadBancoActionPerformed
-        TelaBanco banco = new TelaBanco();
-        banco.setVisible(true);
+        TelaBanco banco = new TelaBanco();        
         desktop.add(banco);
+        banco.setVisible(true);
     }//GEN-LAST:event_menCadBancoActionPerformed
 
     private void menCadSinistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menCadSinistroActionPerformed
-        TelaSinistro sinistro = new TelaSinistro();
-        sinistro.setVisible(true);
+        TelaSinistro sinistro = new TelaSinistro();        
         desktop.add(sinistro);
+        sinistro.setVisible(true);
     }//GEN-LAST:event_menCadSinistroActionPerformed
 
     private void menCadFornActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menCadFornActionPerformed
-        TelaFornecedor fornecedor = new TelaFornecedor();
-        fornecedor.setVisible(true);
+        TelaFornecedor fornecedor = new TelaFornecedor();        
         desktop.add(fornecedor);
+        fornecedor.setVisible(true);
     }//GEN-LAST:event_menCadFornActionPerformed
 
     /**
